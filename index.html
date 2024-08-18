@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: 'Pacifico', cursive;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            color: #fff;
+            animation: fadeIn 2s ease-in-out;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #000;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+
+        .balloons {
+            position: relative;
+            height: 200px;
+            margin-bottom: 30px;
+           
+        }
+
+        .balloon {
+            position: absolute;
+            width: 80px;
+            animation: float 5s ease-in-out infinite;
+            mix-blend-mode: multiply;
+         
+        }
+
+        .balloon1 {
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .balloon2 {
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        .balloon3 {
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        .cake {
+            width: 200px;
+            margin-top: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        #playButton {
+            margin: auto;
+            margin-bottom: 50px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #ff7e5f;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .play-button:hover {
+            transform: scale(0.95);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+                mix-blend-mode: multiply;
+                
+            }
+            40% {
+                transform: translateY(-20px);
+                mix-blend-mode: multiply;
+            }
+            60% {
+                transform: translateY(-10px);
+                mix-blend-mode: multiply;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                mix-blend-mode: multiply;
+            }
+            100% {
+                opacity: 1;
+                mix-blend-mode: multiply;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1.2em;
+            }
+            .balloon {
+                width: 60px;
+            }
+            .cake {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .balloon {
+                width: 50px;
+            }
+            .cake {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .balloon {
+                width: 40px;
+            }
+            .cake {
+                width: 100px;
+                mix-blend-mode: multiply;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday Prachi My Love</h1>
+        <p>Wishing you a day filled with love, laughter, and endless joy.</p>
+        <div class="balloons">
+            <img src="b1.jpg" alt="Balloon" class="balloon balloon1">
+            <img src="b2.png" alt="Balloon" class="balloon balloon2">
+            <img src="b3.jpg" alt="Balloon" class="balloon balloon3">
+        </div>
+        <img src="bc.webp" alt="Birthday Cake" class="cake">
+        <button id="playButton" class="play-button">Play Music</button>
+    </div>
+    <audio id="birthdayMusic" src="hb.mp3" loop></audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('birthdayMusic');
+            const playButton = document.getElementById('playButton');
+
+            audio.play().catch(function(error) {
+                console.log('Autoplay was prevented:', error);
+                playButton.style.display = 'block'; 
+            });
+
+            playButton.addEventListener('click', function() {
+                audio.play();
+                playButton.style.display = 'none'; 
+            });
+
+            audio.addEventListener('ended', function() {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        });
+    </script>
+</body>
+</html>
